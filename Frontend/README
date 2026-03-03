@@ -1,0 +1,18 @@
+# StitchStack Frontend
+
+Tech-Stack: Angular + TypeScript
+
+## Aufgaben
+
+- Measurement-Management
+- Pattern Engine (MVP: Hose)
+- SVG-Rendering
+- 3D Viewer
+- Fit-Analyse + Heatmap
+
+## Fit-Ansatz
+
+- Avatar aus GLB
+- Vereinfachte Capsule-Collider
+- Distanzberechnung Cloth ↔ Avatar
+- Farbliche Darstellung von „zu eng“-Bereichen
