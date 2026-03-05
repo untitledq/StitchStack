@@ -31,10 +31,6 @@ public class User {
         setCreatedAt(createdAt);
     }
 
-    public User newUser(UUID id, String username, String passwordHash) {
-        return new User(id, username, passwordHash, firstName, lastName, email, createdAt);
-    }
-
     public void setId(UUID id) {
         if (id == null) throw new IllegalArgumentException("id must not be null");
         this.id = id;
