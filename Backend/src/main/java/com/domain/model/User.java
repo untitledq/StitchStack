@@ -44,7 +44,7 @@ public class User {
         return id;
     }
 
-    public void  setUsername(String username) {
+    public void setUsername(String username) {
         if (username == null) throw new IllegalArgumentException("username must not be null");
         this.username = username;
     }
