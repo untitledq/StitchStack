@@ -1,7 +1,6 @@
 package com.domain.model;
 
-import java.util.UUID;
-import com.domain.model.enums.MeasurementType;
+import com.domain.enums.MeasurementType;
 
 public class Measurement {
 

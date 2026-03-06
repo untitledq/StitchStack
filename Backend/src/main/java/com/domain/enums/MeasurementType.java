@@ -1,4 +1,4 @@
-package com.domain.model.enums;
+package com.domain.enums;
 
 public enum MeasurementType {
 
