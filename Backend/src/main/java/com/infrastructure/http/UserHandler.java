@@ -1,4 +1,4 @@
-package com.dto;
+package com.infrastructure.http;
 
 public class UserHandler {
     public String username;
