@@ -1,11 +1,10 @@
-package com.infrastructure.http;
+package com.stitchstack.infrastructure.http;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.net.httpserver.HttpExchange;
-import com.dto.ApiErrorResponse;
+import com.stitchstack.dto.ApiErrorResponse;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 
 /**
  * Utility class for sending HTTP responses.

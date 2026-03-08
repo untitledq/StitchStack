@@ -1,4 +1,4 @@
-package com.domain.model;
+package com.stitchstack.domain.model;
 
 import java.time.Instant;
 import java.util.*;

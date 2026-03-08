@@ -1,4 +1,4 @@
-package com.util;
+package com.stitchstack.util;
 
 import java.nio.ByteBuffer;
 import java.security.SecureRandom;

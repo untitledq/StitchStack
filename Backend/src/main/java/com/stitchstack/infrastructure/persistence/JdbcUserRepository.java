@@ -1,14 +1,6 @@
-package com.infrastructure.persistence;
+package com.stitchstack.infrastructure.persistence;
 
-import com.domain.model.User;
-import com.domain.ports.UserRepository;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.sql.*;
-import java.time.Instant;
-import java.util.Optional;
-import java.util.UUID;
+import com.stitchstack.domain.ports.UserRepository;
 
 public class JdbcUserRepository implements UserRepository {
 }

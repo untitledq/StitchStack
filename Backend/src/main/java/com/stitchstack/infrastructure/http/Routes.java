@@ -1,6 +1,4 @@
-package com.infrastructure.http;
-
-import java.util.UUID;
+package com.stitchstack.infrastructure.http;
 
 public class Routes {
     public static void register(

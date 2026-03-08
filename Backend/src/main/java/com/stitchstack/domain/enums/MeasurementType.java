@@ -1,4 +1,4 @@
-package com.domain.enums;
+package com.stitchstack.domain.enums;
 
 public enum MeasurementType {
 

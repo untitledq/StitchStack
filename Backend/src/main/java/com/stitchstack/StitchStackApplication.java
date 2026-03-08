@@ -1,30 +1,12 @@
-package com;
+package com.stitchstack;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.sun.net.httpserver.HttpServer;
-import com.infrastructure.http.AppFactory;
-import java.net.InetSocketAddress;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.infrastructure.http.Router;
-
+@SpringBootApplication
 public class StitchStackApplication {
-    static void main(String[] args) throws Exception {
-        int port = 8080;
 
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.registerModule(new JavaTimeModule());
-        mapper.configure(com.fasterxml.jackson.databind.SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
-        mapper.configure(com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-
-        Router router = new AppFactory().buildRouter(mapper);
-
-        HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
-        server.createContext("/api", router::handle);
-        server.setExecutor(null);
-        server.start();
-
-        System.out.println("MRP HTTP Server läuft auf http://localhost:" + port + "/api");
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> server.stop(0)));
+    public static void main(String[] args) {
+        SpringApplication.run(StitchStackApplication.class, args);
     }
 }

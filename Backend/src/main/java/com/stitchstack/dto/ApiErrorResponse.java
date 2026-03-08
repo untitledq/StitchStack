@@ -1,4 +1,4 @@
-package com.dto;
+package com.stitchstack.dto;
 
 public class ApiErrorResponse {
     public String error;

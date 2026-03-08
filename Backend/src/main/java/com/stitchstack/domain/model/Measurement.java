@@ -1,6 +1,6 @@
-package com.domain.model;
+package com.stitchstack.domain.model;
 
-import com.domain.enums.MeasurementType;
+import com.stitchstack.domain.enums.MeasurementType;
 
 public class Measurement {
 

@@ -1,4 +1,4 @@
-package com.infrastructure.http;
+package com.stitchstack.infrastructure.http;
 import com.sun.net.httpserver.HttpExchange;
 
 import java.util.regex.Matcher;

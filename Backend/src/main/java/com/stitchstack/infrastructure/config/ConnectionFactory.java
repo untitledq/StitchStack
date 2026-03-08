@@ -1,4 +1,4 @@
-package com.infrastructure.config;
+package com.stitchstack.infrastructure.config;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
