@@ -1,5 +1,6 @@
 package com.stitchstack.web.controller;
 
+import com.stitchstack.domain.model.User;
 import com.stitchstack.application.UserService;
 import com.stitchstack.web.request.LoginRequest;
 import com.stitchstack.web.request.RegisterRequest;
@@ -20,14 +21,14 @@ public class AuthController {
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
     public AuthResponse register(@RequestBody RegisterRequest request) {
-        String username = userService.register(
+        User user = userService.register(
                 request.username(),
                 request.password(),
                 request.email()
         );
         return new AuthResponse(
-                null,
-                username,
+                user.getId(),
+                user.getUsername(),
                 "dummy-token"
         );
     }
