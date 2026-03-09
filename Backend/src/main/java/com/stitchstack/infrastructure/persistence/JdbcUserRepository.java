@@ -9,6 +9,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.Instant;
+import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 public class JdbcUserRepository implements UserRepository {
@@ -44,8 +47,8 @@ public class JdbcUserRepository implements UserRepository {
     @Override
     public User save(User user) {
         String sql = """
-                INSERT INTO users (id, username, password_hash, email)
-                VALUES (?, ?, ?, ?)
+                INSERT INTO users (id, username, password_hash, email, created_at)
+                VALUES (?, ?, ?, ?, ?)
                 """;
 
         try (Connection conn = dataSource.getConnection();
@@ -55,6 +58,7 @@ public class JdbcUserRepository implements UserRepository {
             stmt.setString(2, user.getUsername());
             stmt.setString(3, user.getPassword());
             stmt.setString(4, user.getEmail());
+            stmt.setObject(5, user.getCreatedAt());
 
             int affectedRows = stmt.executeUpdate();
 
@@ -62,10 +66,48 @@ public class JdbcUserRepository implements UserRepository {
                 throw new RuntimeException("Failed to save user");
             }
 
-            return user;
+            return new User(
+                    user.getId(),
+                    user.getUsername(),
+                    user.getPassword(),
+                    user.getEmail(),
+                    user.getCreatedAt()
+            );
 
         } catch (SQLException e) {
             throw new RuntimeException("Failed to save user", e);
         }
+    }
+
+    @Override
+    public Optional<User> findByUsername(String username){
+        String sql = """
+        SELECT id, username, password_hash, email, created_at
+        FROM users
+        WHERE username = ?
+        """;
+
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)){
+
+            stmt.setString(1, username);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (!rs.next()) return Optional.empty();
+                return Optional.of(map(rs));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("findById failed", e);
+        }
+
+    }
+
+    private User map(ResultSet rs) throws SQLException {
+        UUID id = (UUID) rs.getObject("id");
+        String username = rs.getString("username");
+        String passwordHash = rs.getString("password_hash");
+        String email = rs.getString("email");
+        Instant createdAt = rs.getTimestamp("created_at").toInstant();
+        return new User(id, username, passwordHash, email, createdAt);
     }
 }

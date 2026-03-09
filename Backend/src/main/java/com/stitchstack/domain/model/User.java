@@ -1,5 +1,6 @@
 package com.stitchstack.domain.model;
 
+import java.time.Instant;
 import java.util.UUID;
 
 public class User {
@@ -8,8 +9,13 @@ public class User {
     private final String username;
     private final String password;
     private final String email;
+    private final Instant createdAt;
 
     public User(UUID id, String username, String password, String email) {
+        this(id, username, password, email, null);
+    }
+
+    public User(UUID id, String username, String password, String email, Instant createdAt) {
         if (id == null) {
             throw new IllegalArgumentException("id must not be null");
         }
@@ -27,6 +33,7 @@ public class User {
         this.username = username;
         this.password = password;
         this.email = email;
+        this.createdAt = createdAt;
     }
 
     public UUID getId() {
@@ -43,5 +50,9 @@ public class User {
 
     public String getEmail() {
         return email;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
     }
 }
