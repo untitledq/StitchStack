@@ -7,7 +7,7 @@ public class User {
 
     private final UUID id;
     private final String username;
-    private final String password;
+    private final String passwordHash;
     private final String email;
     private final Instant createdAt;
 
@@ -31,7 +31,7 @@ public class User {
 
         this.id = id;
         this.username = username;
-        this.password = password;
+        this.passwordHash = password;
         this.email = email;
         this.createdAt = createdAt;
     }
@@ -45,7 +45,7 @@ public class User {
     }
 
     public String getPassword() {
-        return password;
+        return passwordHash;
     }
 
     public String getEmail() {
